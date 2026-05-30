@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artist Official Website</title>
+    <!-- Font Awesome Link for Social Media Icons -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <style>
+        :root {
+            --deep-purple: #0a0118;
+            --mid-purple: #250341;
+            --bright-purple: #8a2be2;
+            --neon-magenta: #ff007f;
+            --light-text: #f3effa;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--deep-purple);
+            color: var(--light-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Galaxy Background Layers */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(138, 43, 226, 0.2) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(255, 0, 127, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(37, 3, 65, 0.5) 0%, var(--deep-purple) 100%);
+            z-index: -2;
+            animation: nebulaShift 20s ease-in-out infinite alternate;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 20px);
+            background-size: 550px 550px, 350px 350px, 250px 250px;
+            background-position: 0 0, 40px 60px, 130px 270px;
+            z-index: -1;
+            opacity: 0.4;
+            animation: starTwinkle 8s linear infinite;
+        }
+
+        @keyframes nebulaShift {
+            0% { transform: scale(1) translate(0, 0); }
+            100% { transform: scale(1.1) translate(2%, 2%); }
+        }
+
+        @keyframes starTwinkle {
+            0% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+            100% { opacity: 0.3; }
+        }
+
+        header {
+            background: rgba(10, 1, 24, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 8px var(--bright-purple);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--light-text);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--neon-magenta);
+        }
+
+        .header-socials {
+            display: flex;
+            gap: 15px;
+            margin-left: 30px;
+            border-left: 1px solid rgba(255,255,255,0.2);
+            padding-left: 20px;
+        }
+
+        .header-socials a {
+            color: var(--light-text);
+            font-size: 1.2rem;
+            transition: color 0.3s, transform 0.2s;
+        }
+
+        .header-socials a:hover {
+            color: var(--neon-magenta);
+            transform: scale(1.1);
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px var(--bright-purple), 0 0 40px var(--neon-magenta);
+            letter-spacing: 4px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: #d1b3ff;
+            text-shadow: 0 0 5px black;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, var(--bright-purple), var(--neon-magenta));
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px var(--neon-magenta);
+        }
+
+        section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+            text-shadow: 0 0 10px var(--bright-purple);
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: var(--neon-magenta);
+            margin: 10px auto 0;
+            border-radius: 2px;
+            box-shadow: 0 0 8px var(--neon-magenta);
+        }
+
+        .bio-container {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .bio-img {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            background: rgba(37, 3, 65, 0.6);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-style: italic;
+            border: 2px solid var(--bright-purple);
+            backdrop-filter: blur(5px);
+        }
+
+        .bio-text {
+            flex: 2;
+            min-width: 300px;
+            background: rgba(10, 1, 24, 0.6);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid var(--bright-purple);
+            box-shadow: 0 0 25px rgba(138, 43, 226, 0.3);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .spotify-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            border: 2px solid var(--bright-purple);
+        }
+
+        .newsletter {
+            background: linear-gradient(135deg, rgba(37, 3, 65, 0.8), rgba(10, 1, 24, 0.9));
+            backdrop-filter: blur(5px);
+            text-align: center;
+            border-radius: 15px;
+            padding: 50px 20px;
+            border: 1px solid var(--bright-purple);
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.2);
+        }
+
+        .newsletter form {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .newsletter input[type="email"] {
+            padding: 12px 20px;
+            width: 300px;
+            border-radius: 25px;
+            border: 1px solid var(--bright-purple);
+            background: rgba(255,255,255,0.05);
+            color: white;
+            font-size: 1rem;
+        }
+
+        .newsletter input[type="email"]:focus {
+            outline: none;
+            border-color: var(--neon-magenta);
+            box-shadow: 0 0 10px var(--neon-magenta);
+        }
+
+        .contact-container {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(10, 1, 24, 0.6);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 20px;
+        }
+
+        .footer-socials a {
+            color: #8c76ac;
+            font-size: 1.8rem;
+            transition: color 0.3s, transform 0.2s;
+        }
+
+        .footer-socials a:hover {
+            color: var(--neon-magenta);
+            transform: scale(1.15);
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 40px;
+            font-size: 0.9rem;
+            color: #8c76ac;
+            border-top: 1px solid rgba(138, 43, 226, 0.2);
+            background: rgba(10, 1, 24, 0.9);
+        }
+
+        @media (max-width: 900px) {
+            .header-socials { display: none; }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">ARTIST NAME</div>
+        <div class="nav-container">
+            <nav>
+                <a href="#about">About</a>
+                <a href="#video">Videos</a>
+                <a href="#music">Music</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <!-- Social links in Header (Hidden on small mobile screens) -->
+            <div class="header-socials">
+                <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://tiktok.com/moneymakinmocha" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://youtube.com" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://x.com/_mochalyn_" target="_blank" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero">
+        <h1>Mocha Lyn</h1>
+        <p>Songwriter • Producer • Performer</p>
+        <a href="#newsletter" class="btn">Join the Movement</a>
+    </div>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="bio-container">
+            <div class="bio-img">
+                [ IMG_5459.jpg
+￼ ]
+            </div>
+            <div class="bio-the Divine Celestial Frequency; Mocha Lyn descends from a lineage of both Ghana and a native tribe of the Geechie Gullah culture originally in James Island, South Carolina. May 5th. 5 is symbolic of Grace in numerology and spirituality. The Frequency was honed specifically by having participated in various choirs ranging from the age of 2 at First Baptist Church of James Island, which led to chorus at James Island Elementary, Charleston Youth Chorus in middle school years, chorus at James Island Charter High, & securing a scholarship at Johnson C Smith University in Charlotte North Carolina. However after being kicked out of choir over the fit of her attire on her shapely vessel Mocha took a step away from music feeling discouraged that a black woman had treated her in such a way. She then joined the campus’ Gospel Choir in lieu of school chorus. But after some years at home after her first child and not being able to escape the call of her own voice inside as well as outsiders reminding her that she has “the voice of an angel that commands a room," she began creating frequencies of her own thus Mocha Lyn was born.>
+                <h3>The Sound & The Vision</h3>
+                <br>
+                <p>Welcome to MochaMania✨. As a songwriter, producer, and performer, I control every aspect of my craft—from the initial spark of a lyric to the final studio mix and providing shows that promise to leave you yearning for more.</p>
+                <br>
+                <p>My music blends a velvety tone with angelic high notes encompasses all 8 octaves, heavy basslines, and hypnotic melodies that entrance any room. Dive into the links below to explore my latest releases.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="video">
+        <h2>Latest Video</h2>
+        <div class="video-container">
+            <iframe src="https://youtube.com" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <section id="music">
+        <h2>Listen Now</h2>
+        <div class="spotify-wrapper">
+            <iframe style="border-radius:12px" src="https://spotify.com" width="100%" height="450" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <section id="newsletter">
+        <div class="newsletter">
+            <h2>Join the VIP List</h2>
+            <p>Get exclusive access to unreleased tracks, behind-the-scenes production breakdowns, and tour dates before anyone else.</p>
+            <form onsubmit="alert('Thank you for signing up!'); return false;">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit" class="btn">Sign Up</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-container">
+            <h2>Get In Touch</h2>
+            <p style="margin-bottom: 30px;">For booking, sync licensing, production inquiries, or press, drop a message below.</p>
+            <a href="mailto:arilynm25@gmail.com" class="btn">Contact Me</a>
+        </div>
+    </section>
+
+    <footer>
+        <!-- Large social links in Footer -->
+        <div class="footer-socials">
+            <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://tiktok.com" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://youtube.com" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://twitter.com" target="_blank" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+        </div>
+        <p>&copy; 2026 Mocha Lyn. All Rights Reserved. Crafted in Cosmic Purple.</p>
+    </footer>
+
+</body>
+</html>
+
